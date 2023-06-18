@@ -1,0 +1,26 @@
+table{
+ tbody{
+  tr{
+    &:hover{
+      background-color: rgb(230, 230, 230);
+      cursor: pointer;
+    }
+  }
+ }
+}
+
+.badge-success{
+  background-color: #28a745 !important;
+}
+
+.badge-danger{
+  background-color: #dc3545 !important;
+}
+
+.page-item-selected {
+  color: white !important;
+  font-weight: bold;
+  a {
+    background-color: #0b5ed7 !important;
+  }
+}

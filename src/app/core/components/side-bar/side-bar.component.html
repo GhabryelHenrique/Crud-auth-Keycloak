@@ -1,0 +1,8 @@
+<div class="col-12 bg-secondary h-100 text-white">
+  <ng-container *ngFor="let item of menu">
+    <div class="py-4 menu--option" (click)="redirectTo(item.path)">
+      <h4 class="text-center">{{ item.label }}</h4>
+    </div>
+  </ng-container>
+
+</div>

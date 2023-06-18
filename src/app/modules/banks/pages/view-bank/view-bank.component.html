@@ -1,0 +1,38 @@
+<div class="p-5">
+  <div class="pt-4">
+    <h5>Cadastro Banco</h5>
+  </div>
+
+  <div class="row justify-content-between align-items-center pt-4">
+    <div class="col-4 d-flex gap-2 align-items-center">
+      <button class="btn btn-primary" *ngIf="userRoles.includes('ROLE_BANCO_EDT')" (click)="edit()">Editar</button>
+      <button class="btn btn-danger"  *ngIf="userRoles.includes('ROLE_BANCO_DEL')"  (click)="deleteBank()">Excluir</button>
+      <button class="btn btn-primary" [routerLink]="'/banks'">Fechar</button>
+    </div>
+  </div>
+
+  <form [formGroup]="formulario!" class="mt-5">
+    <div class="d-flex flex-column">
+      <label for="codigo">Código:</label>
+      <input
+      class="codeInput"
+      type="text"
+      id="codigo"
+      formControlName="codigo"
+      />
+    </div>
+
+    <div class="d-flex flex-column">
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" formControlName="descricao" />
+    </div>
+
+    <div class="d-flex flex-column">
+      <label for="status">Status:</label>
+      <select         class="codeInput" id="status" formControlName="status">
+        <option value="A">Ativo</option>
+        <option value="I">Inativo</option>
+      </select>
+    </div>
+  </form>
+</div>

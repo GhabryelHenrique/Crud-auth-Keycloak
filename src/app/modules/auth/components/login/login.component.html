@@ -1,0 +1,16 @@
+<form class="row col-12 col-sm-6 mx-auto align-items-center" [formGroup]="form">
+  <div class="text-center pt-4">
+    <h4>Autenticação</h4>
+  </div>
+  <div class="col-12 pt-4">
+    <label for="user">Usuário</label>
+    <input type="text" id="user" formControlName="username">
+  </div>
+  <div class="col-12 pt-4">
+    <label for="password">Senha</label>
+    <input type="password" id="password" formControlName="password">
+  </div>
+  <div class="col-12 pt-4">
+    <button class="btn btn-primary" (click)="login()">Entrar</button>
+  </div>
+</form>

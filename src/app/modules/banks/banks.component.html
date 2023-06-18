@@ -1,0 +1,93 @@
+<div class="p-5">
+  <div class="pt-4">
+    <h5>Cadastro de Bancos</h5>
+  </div>
+
+  <div class="row justify-content-between align-items-center pt-4">
+    <div class="col-4">
+      <input
+        type="text"
+        placeholder="Pesquisar..."
+        (keyup)="filterBanks($event)"
+      />
+    </div>
+    <div class="col-4 d-flex gap-2 align-items-center justify-content-end">
+      <button class="btn btn-primary" *ngIf="userRoles.includes('ROLE_BANCO_ADD')" [routerLink]="'/banks/newBank/createBank'">Novo</button>
+      <button class="btn btn-danger"  *ngIf="userRoles.includes('ROLE_BANCO_DEL')"  (click)="deleteBanks()">Excluir</button>
+    </div>
+  </div>
+
+  <div class="pt-4">
+    <table class="table">
+      <thead class="bg-light">
+        <tr>
+          <th>
+            <input type="checkbox" (change)="selectAll()" />
+          </th>
+          <th>Id</th>
+          <th>Status</th>
+          <th>Código</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bank of banks?.content; let i = index" (click)="viewOrEditBank(bank.id)" >
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="bank.isSelected"
+              (change)="(!banks!.content[i].isSelected)"
+            />
+          </td>
+          <td>{{ bank.id }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="
+                bank.status.id === 'A' ? 'badge-success' : 'badge-danger'
+              "
+              >{{ bank.status.descricao }}</span
+            >
+          </td>
+          <td scope="row">{{ bank.codigo }}</td>
+          <td>{{ bank.descricao }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row pt-4">
+    <div class="col-2">{{ banks?.totalElements }} Registros</div>
+    <div class="col-10 d-flex justify-content-end">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <button
+              [disabled]="selectedPage === 1"
+              class="page-link"
+              (click)="selectPage(selectedPage - 1)"
+            >
+              Previous
+            </button>
+          </li>
+          <li
+            class="page-item"
+            *ngFor="let page of totalPagesArray"
+            [ngClass]="page === selectedPage ? 'page-item-selected' : ''"
+          >
+            <a class="page-link" (click)="selectPage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item">
+            <button
+              [disabled]="selectedPage === totalPagesArray.length"
+              class="page-link"
+              (click)="selectPage(selectedPage + 1)"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

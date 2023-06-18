@@ -1,0 +1,8 @@
+<div class="w-100 d-flex justify-content-between align-items-center bg-light py-3 px-5">
+  <div *ngIf="username">
+    Autenticado como: <strong>{{username}}</strong>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="logoff()">Logoff</button>
+  </div>
+</div>

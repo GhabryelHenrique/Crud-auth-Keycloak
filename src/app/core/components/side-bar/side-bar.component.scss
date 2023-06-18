@@ -1,0 +1,8 @@
+.menu{
+  &--option{
+    &:hover{
+      cursor: pointer;
+      background-color: #0d6efd;
+    }
+  }
+}
